@@ -1,6 +1,6 @@
 # Buildfix.nvim
 
-A simple Neovim plugin to execute a build command with optional prefix#suffix.
+A simple Neovim plugin to execute a build command with optional prefix and suffix.
 
 ## Features
 

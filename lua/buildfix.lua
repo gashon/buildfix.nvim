@@ -1,14 +1,15 @@
 local M = {}
 
 local config = {
+	prefix = "",
 	command = "buildfix",
 	suffix = "",
 	fix_on_save = false,
 	keymap = "<leader>bf",
 }
 
-local function surround_command(cmd, suffix)
-	return cmd .. suffix
+local function surround_command(prefix, cmd, suffix)
+	return prefix .. cmd .. suffix
 end
 
 local function notify(message, level)
@@ -16,7 +17,7 @@ local function notify(message, level)
 end
 
 local function execute_buildfix()
-	local cmd = surround_command(config.command, config.suffix)
+	local cmd = surround_command(config.prefix, config.command, config.suffix)
 	local output = vim.fn.system(cmd)
 
 	if vim.v.shell_error == 0 then
