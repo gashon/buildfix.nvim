@@ -2,7 +2,7 @@ local M = {}
 
 local config = {
 	prefix = "",
-	command = "buildfix",
+	command = "build_cleaner",
 	suffix = "",
 	fix_on_save = false,
 	keymap = "<leader>bf",
