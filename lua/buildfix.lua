@@ -12,10 +12,6 @@ local function surround_command(prefix, cmd, suffix)
 	return prefix .. cmd .. suffix
 end
 
-local function notify(message, level)
-	require("noice").notify(message, level)
-end
-
 local function execute_buildfix()
 	local cmd = surround_command(config.prefix, config.command, config.suffix)
 	local output = vim.fn.system(cmd)
