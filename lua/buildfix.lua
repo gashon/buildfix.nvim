@@ -2,7 +2,16 @@ local M = {}
 
 local config = {
 	prefix = "",
-	command = "build_cleaner",
+	-- from https://yaqs.corp.google.com/eng/q/6079781431624597504
+	command = [[hg fix && { hg l --stat; hg status --no-status --color false; } \
+	| perl -nE 'say $& if m{\S*BUILD}' \
+	| sort | uniq \
+	| xargs build_cleaner \
+	    --nointeractive \
+	    --keep_going \
+	    --jobs $(nproc) \
+	    --changelist "all" \
+	    --action_spec_file=/google/src/files/head/depot/google3/javascript/typescript/taze/action_spec.textproto]],
 	suffix = "",
 	fix_on_save = false,
 	keymap = "<leader>bf",
